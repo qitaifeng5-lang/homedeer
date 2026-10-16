@@ -1,6 +1,6 @@
 # Homedeer Services
 
-A responsive, English website for Homedeer Services in Ontario. Built with plain HTML, CSS and JavaScript; no dependencies or build step.
+A responsive, English website for Homedeer Services in Markham, Ontario, Canada. Built with plain HTML, CSS and JavaScript; no dependencies or build step.
 
 ## Run locally
 
@@ -55,10 +55,10 @@ GitHub Pages serves static files only: customer enquiries require the configured
 
 ## Customer experience and search settings
 
-Service cards explain the property details to include in an enquiry. Quote links lead directly to the existing Formspree form. How It Works describes the enquiry, quote and scheduling stages; the native HTML FAQ works without JavaScript. Specific towns, response times, ice treatment and leaf disposal are not guaranteed and need business confirmation.
+Service cards explain the property details to include in an enquiry. Quote links lead directly to the existing Formspree form. How It Works describes the enquiry, quote and scheduling stages; the native HTML FAQ works without JavaScript. The confirmed service area is Markham, Ontario, Canada; no other cities are advertised. Response times, ice treatment and leaf disposal require business confirmation.
 
 Mobile controls use at least 44px navigation targets and 16px form text to avoid focus zoom on iOS. The page uses system fonts, local CSS/JavaScript and inline SVG; there are no external font, image or UI-library downloads on initial load. No measured Lighthouse score is claimed.
 
-Search metadata includes a descriptive title, description, canonical URL, Open Graph tags and Organization JSON-LD without fabricated addresses, reviews or credentials. `sitemap.xml` lists the GitHub Pages URL. If a custom domain is introduced, update the canonical, Open Graph URL, structured-data URL and sitemap together. Submit the sitemap URL to Google Search Console after verifying ownership. A project site cannot control the account-wide `/robots.txt`; no project-path robots file is required. These settings do not guarantee indexing or ranking.
+Search metadata includes a descriptive title, description, canonical URL, Open Graph tags and Organization JSON-LD with Markham as the service area, without physical addresses, reviews or credentials. `sitemap.xml` lists the GitHub Pages URL. If a custom domain is introduced, update the canonical, Open Graph URL, structured-data URL and sitemap together. Submit the sitemap URL to Google Search Console after verifying ownership. A project site cannot control the account-wide `/robots.txt`; no project-path robots file is required. These settings do not guarantee indexing or ranking.
 
 Validation for this update: Chromium checked widths 320, 390, 760, 768, 1024 and 1440px without horizontal overflow; mobile navigation, FAQ toggles, quote anchor links, no-JavaScript navigation/FAQ and the Formspree form were exercised. Browser request interception checked all four fields, failed responses retaining entries, and acknowledged success resetting the form. No real customer messages were sent. HTML targets, JSON-LD, sitemap consistency, HTTP assets and JavaScript syntax also passed.
