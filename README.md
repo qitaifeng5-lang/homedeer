@@ -52,3 +52,13 @@ For GitHub Free, use a public repository. In `qitaifeng5-lang/homedeer`, open **
 Wait for the Pages deployment in the **Actions** tab to succeed. The expected project URL is `https://qitaifeng5-lang.github.io/homedeer/`; Settings → Pages shows the confirmed deployment URL. If the first visit returns 404, check the workflow status and allow a few minutes after successful deployment. Subsequent pushes to `main` deploy automatically.
 
 GitHub Pages serves static files only: customer enquiries require the configured Formspree endpoint described above. Publishing a Codex environment does not automatically deploy GitHub Pages.
+
+## Customer experience and search settings
+
+Service cards explain the property details to include in an enquiry. Quote links lead directly to the existing Formspree form. How It Works describes the enquiry, quote and scheduling stages; the native HTML FAQ works without JavaScript. Specific towns, response times, ice treatment and leaf disposal are not guaranteed and need business confirmation.
+
+Mobile controls use at least 44px navigation targets and 16px form text to avoid focus zoom on iOS. The page uses system fonts, local CSS/JavaScript and inline SVG; there are no external font, image or UI-library downloads on initial load. No measured Lighthouse score is claimed.
+
+Search metadata includes a descriptive title, description, canonical URL, Open Graph tags and Organization JSON-LD without fabricated addresses, reviews or credentials. `sitemap.xml` lists the GitHub Pages URL. If a custom domain is introduced, update the canonical, Open Graph URL, structured-data URL and sitemap together. Submit the sitemap URL to Google Search Console after verifying ownership. A project site cannot control the account-wide `/robots.txt`; no project-path robots file is required. These settings do not guarantee indexing or ranking.
+
+Validation for this update: Chromium checked widths 320, 390, 760, 768, 1024 and 1440px without horizontal overflow; mobile navigation, FAQ toggles, quote anchor links, no-JavaScript navigation/FAQ and the Formspree form were exercised. Browser request interception checked all four fields, failed responses retaining entries, and acknowledged success resetting the form. No real customer messages were sent. HTML targets, JSON-LD, sitemap consistency, HTTP assets and JavaScript syntax also passed.

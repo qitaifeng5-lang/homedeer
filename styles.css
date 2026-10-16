@@ -3,3 +3,11 @@
 
 /* Contact feedback preserves the existing form layout. */
 .contact-notice a{text-decoration:underline}button:disabled{cursor:not-allowed;opacity:.65;transform:none}#form-status[data-state="error"]{color:#953624}#form-status[data-state="success"]{color:#215c3d}
+
+/* Lightweight, native FAQ and comfortable mobile controls. */
+nav{gap:22px}.hero-visual{aspect-ratio:600/650}.hero-visual>svg{height:auto}.service-details{padding-left:19px;font-size:13px;color:var(--muted);margin:0 0 24px}.service-details li+li{margin-top:9px}.steps{list-style:none;padding:0}.steps>li{border-top:1px solid #cdd7c7;padding-top:18px}.steps>li>span{font-size:11px;color:#6e7b66}.process-cta{margin-top:30px}.faq{padding-top:20px}.faq details{border-bottom:1px solid var(--line);padding:5px 0}.faq summary{cursor:pointer;font-size:17px;padding:18px 4px;min-height:48px}.faq details p{max-width:760px;color:var(--muted);padding:0 4px 22px;font-size:14px}.faq summary:focus-visible{outline:3px solid #9c7635;outline-offset:3px}#contact-form{scroll-margin-top:25px}.service-content a{display:inline-block;min-height:44px;padding-top:10px}input,select,textarea{font-size:16px;min-height:46px}.field label{font-size:13px}.field label span,.field small{font-size:12px}.contact-notice{font-size:12px}#form-status{min-height:24px}.hero-copy,.hero-visual,.form-panel,.contact-copy{min-width:0}body{overflow-wrap:break-word}
+@media(max-width:1000px) and (min-width:761px){.site-header{flex-wrap:wrap}nav{width:100%;justify-content:space-between}}
+@media(max-width:760px){nav{display:flex;align-items:stretch;flex-direction:column;gap:4px}nav>a{min-height:44px;padding:10px 4px}nav>.button{padding:13px 18px;justify-content:space-between}.menu-toggle{min-height:44px;min-width:75px}.hero .button,.process-cta{min-height:48px}.hero-visual{aspect-ratio:600/650;max-height:none}.hero-visual>svg{height:auto}.hero h1{font-size:clamp(44px,11vw,58px)}.section h2{letter-spacing:-1.5px}.button{gap:18px}.faq summary{font-size:16px}.form-panel{padding:22px 18px}}
+/* Prevent the illustration's aspect ratio from widening tablet grid columns. */
+.hero{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)}.hero-visual{width:100%;max-width:100%}
+@media(max-width:760px){.hero{grid-template-columns:minmax(0,1fr)}}
