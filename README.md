@@ -30,7 +30,7 @@ GitHub Pages cannot process email itself. Formspree provides a hosted form endpo
 5. Push to `main`, wait for GitHub Pages deployment, then submit a clearly labelled test enquiry from the published HTTPS site. Confirm both the Formspree dashboard entry and receipt at the verified inbox (including spam). If you enable domain restrictions, allow `qitaifeng5-lang.github.io` according to the dashboard instructions.
 6. Review the service’s spam protection, account limits and privacy settings before accepting enquiries.
 
-The form retains name, email, service and message fields. It shows “Thank you! We will contact you soon.” only after an HTTP success response with Formspree’s `ok: true` acknowledgement. This confirms service acceptance, not inbox delivery. Failed or uncertain requests retain entries and show an error. Submissions are disabled without JavaScript. No endpoint has been supplied yet, so live delivery is not verified.
+The form retains name, email, service and message fields. It shows “Thank you! We will contact you soon.” only after an HTTP success response with Formspree’s `ok: true` acknowledgement. This confirms service acceptance, not inbox delivery. Failed or uncertain requests retain entries and show an error. Submissions are disabled without JavaScript. The configured Homedeer Contact endpoint is `https://formspree.io/f/xvkzdqwq`. Live inbox delivery still needs to be verified with a test submission from the published site.
 
 ## Preview troubleshooting / 预览故障排查
 

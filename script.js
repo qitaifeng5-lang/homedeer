@@ -1,4 +1,4 @@
-// No libraries or build step needed. The form never sends or stores data.
+// No libraries or build step needed. Enquiries are sent to the configured Formspree endpoint.
 const menuButton = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('#navigation');
 menuButton.hidden = false;
