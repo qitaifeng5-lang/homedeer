@@ -1,4 +1,4 @@
-// No libraries or build step needed. Enquiries are sent to the configured Formspree endpoint.
+// Portfolio demo: no network requests, message delivery or persistent storage.
 const menuButton = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('#navigation');
 menuButton.hidden = false;
@@ -23,71 +23,34 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
-// Paste the public Formspree endpoint into index.html, never an API key.
+// The button is not a submit button. The form also blocks Enter-key submission.
 const form = document.querySelector('#contact-form');
 const status = document.querySelector('#form-status');
-const submitButton = form.querySelector('button[type="submit"]');
-const endpoint = form.dataset.endpoint.trim();
-const configured = /^https:\/\/formspree\.io\/f\/[a-zA-Z0-9]+$/.test(endpoint);
-let sending = false;
+const demoButton = form.querySelector('button');
 
-function showStatus(message, state) {
-  status.textContent = message;
-  status.dataset.state = state;
-}
-
-form.addEventListener('submit', async (event) => {
+function validateDemo(event) {
   event.preventDefault();
-  if (sending) return;
-  if (!configured) {
-    showStatus('Online enquiries are temporarily unavailable. Please check back soon.', 'error');
-    return;
-  }
+  status.textContent = '';
+  status.dataset.state = '';
   for (const id of ['name', 'message']) {
     const field = form.elements.namedItem(id);
     const minimum = id === 'message' ? 10 : 1;
     field.setCustomValidity(field.value.trim().length < minimum
-      ? `Please enter ${id === 'message' ? 'a message with at least 10 non-padding characters' : 'your name'}.`
+      ? `Please enter ${id === 'message' ? 'a sample message with at least 10 non-padding characters' : 'a sample name'}.`
       : '');
   }
   if (!form.reportValidity()) return;
-  sending = true;
-  submitButton.disabled = true;
-  submitButton.textContent = 'Sending…';
-  form.setAttribute('aria-busy', 'true');
-  showStatus('Sending your enquiry…', 'pending');
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 20000);
-  // Capture entries before awaiting the service; retain them on failure.
-  const data = new FormData(form);
-  try {
-    const response = await fetch(endpoint, {
-      method: 'POST', body: data, headers: { Accept: 'application/json' },
-      signal: controller.signal,
-    });
-    const result = await response.json();
-    if (!response.ok || result.ok !== true) {
-      showStatus('Your enquiry was not confirmed. Please check your details and try again later.', 'error');
-      return;
-    }
-    showStatus('Thank you! We will contact you soon.', 'success');
-    form.reset();
-  } catch {
-    // A lost response does not prove whether the service received the message.
-    showStatus('We could not confirm receipt. Please check your connection before trying again. Your enquiry may already have reached us.', 'error');
-  } finally {
-    clearTimeout(timeout);
-    sending = false;
-    submitButton.disabled = false;
-    submitButton.innerHTML = 'Send message <span aria-hidden="true">↗</span>';
-    form.removeAttribute('aria-busy');
-  }
-});
+  status.dataset.state = 'success';
+  status.textContent = 'Demo complete — your sample entries passed validation. Nothing was sent or saved.';
+}
+form.addEventListener('submit', validateDemo);
+demoButton.addEventListener('click', validateDemo);
 form.addEventListener('input', (event) => {
   if (typeof event.target.setCustomValidity === 'function') event.target.setCustomValidity('');
-  if (!sending && configured) showStatus('', '');
+  status.textContent = '';
+  status.dataset.state = '';
 });
-if (configured) {
-  submitButton.disabled = false;
-  showStatus('', '');
-}
+// Without JavaScript, all fields and the button remain disabled.
+form.querySelector('fieldset').disabled = false;
+demoButton.disabled = false;
+status.textContent = 'Demo only — use sample details. Nothing will be sent or saved.';

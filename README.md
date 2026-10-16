@@ -1,6 +1,6 @@
-# Homedeer Services
+# Homedeer — Portfolio Demo
 
-A responsive, English website for Homedeer Services in Markham, Ontario, Canada. Built with plain HTML, CSS and JavaScript; no dependencies or build step.
+**Portfolio Demo — Not a Real Business.** This website was created to showcase web design skills. Snow removal, leaf cleanup and Markham, Ontario, Canada are illustrative examples only. No services, quotes, bookings or business contact are offered.
 
 ## Run locally
 
@@ -17,20 +17,13 @@ Then open `http://localhost:8000` in your own local browser. Stop the server wit
 
 - `index.html`: content, accessible navigation and inline SVG illustrations.
 - `styles.css`: colours, layout, mobile breakpoints and reduced-motion support.
-- `script.js`: mobile menu, form validation and Formspree submission.
+- `script.js`: mobile navigation and local-only demo validation.
 
-## Connect customer enquiries with Formspree
+## Local-only demo form
 
-GitHub Pages cannot process email itself. Formspree provides a hosted form endpoint and a free tier with usage limits; check its current pricing at https://formspree.io/plans before selecting a plan.
+The previous Formspree integration has been removed from the current website. The demo validates sample name, email, service and message entries locally. It does not use fetch, send mail or save entries to persistent storage. Use sample data only. The confirmation explicitly states that nothing was sent or saved.
 
-1. Register or sign in at https://formspree.io/ and create a form in the dashboard.
-2. Set and verify the recipient email using Formspree’s instructions. Do not place account passwords or API keys in this repository.
-3. Copy the endpoint shown by the dashboard (`https://formspree.io/f/` followed by your form ID).
-4. Set the contact form’s `data-endpoint=""` in `index.html` to that exact URL. Do not invent an ID. Until this is configured, the submit button is disabled and an unavailable notice is shown.
-5. Push to `main`, wait for GitHub Pages deployment, then submit a clearly labelled test enquiry from the published HTTPS site. Confirm both the Formspree dashboard entry and receipt at the verified inbox (including spam). If you enable domain restrictions, allow `qitaifeng5-lang.github.io` according to the dashboard instructions.
-6. Review the service’s spam protection, account limits and privacy settings before accepting enquiries.
-
-The form retains name, email, service and message fields. It shows “Thank you! We will contact you soon.” only after an HTTP success response with Formspree’s `ok: true` acknowledgement. This confirms service acceptance, not inbox delivery. Failed or uncertain requests retain entries and show an error. Submissions are disabled without JavaScript. The configured Homedeer Contact endpoint is `https://formspree.io/f/xvkzdqwq`. Live inbox delivery still needs to be verified with a test submission from the published site.
+The demo button is not a submit button, the form intercepts submission, and a Content Security Policy blocks form actions and scripted network connections. All controls remain disabled without JavaScript. The website cannot disable a previously created Formspree account or endpoint; manage that separately in the Formspree dashboard if no longer needed. Old Git commits retain historical code.
 
 ## Preview troubleshooting / 预览故障排查
 
@@ -51,14 +44,14 @@ For GitHub Free, use a public repository. In `qitaifeng5-lang/homedeer`, open **
 
 Wait for the Pages deployment in the **Actions** tab to succeed. The expected project URL is `https://qitaifeng5-lang.github.io/homedeer/`; Settings → Pages shows the confirmed deployment URL. If the first visit returns 404, check the workflow status and allow a few minutes after successful deployment. Subsequent pushes to `main` deploy automatically.
 
-GitHub Pages serves static files only: customer enquiries require the configured Formspree endpoint described above. Publishing a Codex environment does not automatically deploy GitHub Pages.
+## Search metadata and validation
 
-## Customer experience and search settings
+The title, descriptions and sharing metadata identify the project as a portfolio demo. JSON-LD describes a WebSite, not a real Organization or service area. Canonical and sitemap retain the existing project URL. No physical address is published.
 
-Service cards explain the property details to include in an enquiry. Quote links lead directly to the existing Formspree form. How It Works describes the enquiry, quote and scheduling stages; the native HTML FAQ works without JavaScript. The confirmed service area is Markham, Ontario, Canada; no other cities are advertised. Response times, ice treatment and leaf disposal require business confirmation.
+The project retains the existing green, white and dark gray design, inline SVG artwork, responsive layouts, native FAQ and reduced-motion support. No external fonts or UI libraries are needed.
 
-Mobile controls use at least 44px navigation targets and 16px form text to avoid focus zoom on iOS. The page uses system fonts, local CSS/JavaScript and inline SVG; there are no external font, image or UI-library downloads on initial load. No measured Lighthouse score is claimed.
+## Browser checks
 
-Search metadata includes a descriptive title, description, canonical URL, Open Graph tags and Organization JSON-LD with Markham as the service area, without physical addresses, reviews or credentials. `sitemap.xml` lists the GitHub Pages URL. If a custom domain is introduced, update the canonical, Open Graph URL, structured-data URL and sitemap together. Submit the sitemap URL to Google Search Console after verifying ownership. A project site cannot control the account-wide `/robots.txt`; no project-path robots file is required. These settings do not guarantee indexing or ranking.
+With Playwright available and Chromium installed, run `node tests/portfolio.test.cjs` from the repository root. Set `CHROMIUM_PATH` if Chromium is not at `/usr/bin/chromium`. Test dependencies are optional and not needed to run the website.
 
-Validation for this update: Chromium checked widths 320, 390, 760, 768, 1024 and 1440px without horizontal overflow; mobile navigation, FAQ toggles, quote anchor links, no-JavaScript navigation/FAQ and the Formspree form were exercised. Browser request interception checked all four fields, failed responses retaining entries, and acknowledged success resetting the form. No real customer messages were sent. HTML targets, JSON-LD, sitemap consistency, HTTP assets and JavaScript syntax also passed.
+Verified: six screen widths (320–1440px), portfolio notice, mobile menu, FAQ, demo links, required/email/length/whitespace validation, no submission requests or browser storage during interaction, Enter/programmatic submission prevention, JavaScript-disabled controls and navigation, and no JavaScript errors. HTML references, portfolio metadata, JSON-LD and sitemap consistency also passed.
