@@ -1,6 +1,6 @@
 # Homedeer Services
 
-A responsive, English demonstration website for a fictional Ontario home service company. Built with plain HTML, CSS and JavaScript; no dependencies or build step.
+A responsive, English website for Homedeer Services in Ontario. Built with plain HTML, CSS and JavaScript; no dependencies or build step.
 
 ## Run locally
 
@@ -17,15 +17,20 @@ Then open `http://localhost:8000` in your own local browser. Stop the server wit
 
 - `index.html`: content, accessible navigation and inline SVG illustrations.
 - `styles.css`: colours, layout, mobile breakpoints and reduced-motion support.
-- `script.js`: mobile menu and demo form validation.
+- `script.js`: mobile menu, form validation and Formspree submission.
 
-## Before real use
+## Connect customer enquiries with Formspree
 
-This is a fictional company. The email uses the reserved `.example` domain and cannot receive mail. Ontario coverage is explicitly unconfirmed; replace it with accurate information. No reviews, prices, street addresses or phone numbers are asserted.
+GitHub Pages cannot process email itself. Formspree provides a hosted form endpoint and a free tier with usage limits; check its current pricing at https://formspree.io/plans before selecting a plan.
 
-The contact form is a demo. It does not send or save entries. It checks required fields, email format, a nonblank name and a message of 10–2,000 characters. Use sample details only. Before accepting enquiries, connect a secure HTTPS backend, add server-side validation and abuse protection, establish appropriate privacy and retention practices, and update the demo notices only after end-to-end verification. Never put credentials in frontend JavaScript.
+1. Register or sign in at https://formspree.io/ and create a form in the dashboard.
+2. Set and verify the recipient email using Formspree’s instructions. Do not place account passwords or API keys in this repository.
+3. Copy the endpoint shown by the dashboard (`https://formspree.io/f/` followed by your form ID).
+4. Set the contact form’s `data-endpoint=""` in `index.html` to that exact URL. Do not invent an ID. Until this is configured, the submit button is disabled and an unavailable notice is shown.
+5. Push to `main`, wait for GitHub Pages deployment, then submit a clearly labelled test enquiry from the published HTTPS site. Confirm both the Formspree dashboard entry and receipt at the verified inbox (including spam). If you enable domain restrictions, allow `qitaifeng5-lang.github.io` according to the dashboard instructions.
+6. Review the service’s spam protection, account limits and privacy settings before accepting enquiries.
 
-Navigation remains available without JavaScript. Form submission is disabled without JavaScript.
+The form retains name, email, service and message fields. It shows “Thank you! We will contact you soon.” only after an HTTP success response with Formspree’s `ok: true` acknowledgement. This confirms service acceptance, not inbox delivery. Failed or uncertain requests retain entries and show an error. Submissions are disabled without JavaScript. No endpoint has been supplied yet, so live delivery is not verified.
 
 ## Preview troubleshooting / 预览故障排查
 
@@ -46,4 +51,4 @@ For GitHub Free, use a public repository. In `qitaifeng5-lang/homedeer`, open **
 
 Wait for the Pages deployment in the **Actions** tab to succeed. The expected project URL is `https://qitaifeng5-lang.github.io/homedeer/`; Settings → Pages shows the confirmed deployment URL. If the first visit returns 404, check the workflow status and allow a few minutes after successful deployment. Subsequent pushes to `main` deploy automatically.
 
-GitHub Pages serves static files only: the contact form remains a demo and the `.example` email remains a placeholder. Publishing a Codex environment does not automatically deploy GitHub Pages.
+GitHub Pages serves static files only: customer enquiries require the configured Formspree endpoint described above. Publishing a Codex environment does not automatically deploy GitHub Pages.
